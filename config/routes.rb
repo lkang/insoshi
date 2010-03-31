@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :guitars
+
   map.resources :categories
   map.resources :links
   map.resources :events, :member => { :attend => :get, 
@@ -12,7 +14,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :connections
   map.resources :password_reminders
   map.resources :photos,
-                :member => { :set_primary => :put, :set_avatar => :put }
+                :member => { :set_primary => :put, :set_avatar => :put } do |photo|
+    photo.resources :comments
+  end
+
   map.open_id_complete 'session', :controller => "sessions",
                                   :action => "create",
                                   :requirements => { :method => :get }
@@ -28,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people do |person|
      person.resources :messages
      person.resources :galleries
+     person.resources :guitars
      person.resources :connections
      person.resources :comments
   end

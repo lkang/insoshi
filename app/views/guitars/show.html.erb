@@ -1,0 +1,16 @@
+<%- column_div :type => :primary do -%>
+
+  <h2>
+  <%= link_to "#{h @guitar.person.name}'s Guitars", guitars_tab_path(@guitar) %>
+  </h2>
+
+  <ul class="list guitar full">
+    <%= render :partial => 'guitars/guitar', :object => @guitar %>
+  </ul>
+
+
+<%- end -%>
+
+  <%- column_div :type => :secondary do -%>
+    <%= render :partial => 'shared/minifeed' %>
+  <%- end -%>

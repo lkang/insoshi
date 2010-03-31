@@ -1,0 +1,26 @@
+<h1>Listing guitars</h1>
+
+<table>
+  <tr>
+    <th>Person</th>
+    <th>Title</th>
+    <th>Specs</th>
+    <th>Description</th>
+  </tr>
+
+<% for guitar in @guitars %>
+  <tr>
+    <td><%=h guitar.person_id %></td>
+    <td><%=h guitar.title %></td>
+    <td><%=h guitar.specs %></td>
+    <td><%=h guitar.description %></td>
+    <td><%= link_to 'Show', guitar %></td>
+    <td><%= link_to 'Edit', edit_guitar_path(guitar) %></td>
+    <td><%= link_to 'Destroy', guitar, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New guitar', new_guitar_path %>

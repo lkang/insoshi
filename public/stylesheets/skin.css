@@ -4,10 +4,10 @@ body {
   text-align: center;
 }
 #header-wrap {
-  /* background: #069; */
-  background: #069 url('/images/header_background.png');
-  float: left;
-  width: 100%;
+  background-color:#3B5998;
+  height:41px;
+  float: left; /* :0; */
+  width:100%;
 }
 #header, #wrap, #footer {
   margin: 0 auto;
@@ -47,7 +47,7 @@ body {
 /* Header */
 #header {
   position: relative;
-  height: 80px;
+  height: 41px;
 }
 
 #header h1 {
@@ -60,15 +60,16 @@ body {
 
 /* Header-nav */
 #nav {
-  margin: 44px 0 0 0;
-  width: 560px;
+  margin: 21px 0 0 0;
+  width: 595px;
   float: right;
 }
 #nav li {
-  background: #069 url(/images/header-grad.jpg) bottom repeat-x;
+/* url(/images/header-grad.jpg)  */
+  background: #3b5998;
   float: left;
-  height: 36px;
-  line-height: 36px;
+  height: 20px;
+  line-height: 20px;
   list-style-type: none;
   margin: 0 0 0 0;
   padding: 0;
@@ -78,15 +79,16 @@ body {
 #nav li a {
   color: #fff;
   display: block;
-  height: 36px;
+  height: 20px;
   font-size: 12px;
 }
 #nav li a:hover {
-  background: url(/images/header-grad-inv.jpg) top repeat-x;
+  /* background: url(/images/header-grad-inv.jpg) top repeat-x; */
+  background: #b8bfda; 
 }
 #nav li.active a, #nav li.active a:hover {
   background: #fff;
-  color: #069;
+  color: #3b5998;
 }
 #nav li.n-home {
   margin-left: 0;
@@ -130,8 +132,8 @@ p.welcome {
   display: inline;
   float: left;
   list-style: none;
-  margin: 0 0 12px 6px;
-  padding: 0 0 6px 0;
+  margin: 0 0 2px 6px;
+  padding: 0 0 3px 0;
   width: 100%;
 }
 .list li.last {
@@ -181,6 +183,11 @@ p.welcome {
   top: 0;
 }
 
+.photo .list p {
+  margin-left: 0;
+  margin-bottom: .5em;
+}
+
 .blog p {
   margin-left: 0;
   margin-bottom: 1em;
@@ -218,7 +225,7 @@ p.welcome {
   padding: 0;
 }
 .col2 .contacts.grid li {
-  height: 36px;
+  height: 20px;
   margin: 0 0 6px 6px;
   overflow: hidden;
   width: 36px;
@@ -258,6 +265,7 @@ p.welcome {
 }
 .profile img.photo {
   margin-bottom: 12px;
+  width: 50px;
 }
 .profile .note {
   margin-left: 252px;
@@ -279,8 +287,8 @@ p.welcome {
   background: url(/images/silver-grad.jpg) bottom repeat-x;
   border-bottom: 1px solid #ccc;
   float: left;
-  height: 24px;
-  margin-top: -24px;
+  height: 20px;
+  margin-top: -16px;
   position: relative;
   width: 100%;
 }
@@ -288,7 +296,7 @@ p.welcome {
   background: none;
   float: left;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 20px;
   list-style-type: none;
   margin: 0;
   text-align: center;
@@ -393,7 +401,7 @@ form, div, h2, ul, li {zoom: 1;}
 
 /* Bill's additions */
 h2 {
-  padding-left: 0px;
+  padding-left: 6px;
 }
 .profile {
   position: relative;
@@ -430,7 +438,7 @@ ul.ui-tabs-nav li {
 .ui-tabs-panel {
   min-height: 540px;
   width: 96%;
-  border: 1px solid #4A70B1;
+  border: 1px solid #D8DFEA;
 }
 .comments li div {border-bottom: 1px solid #ccc;}
 .imgHoverMarker {display: inline;}

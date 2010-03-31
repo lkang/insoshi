@@ -1,5 +1,11 @@
 <div id="profile" style="display: none;">
   <% tabs = TabsRenderer.new(self, :id => "tabCol") %>
+
+  <% tabs.create('tGuitars', 'Guitars' ) do %>
+    <%= render :partial => 'guitars' %>
+    <div class="clear"></div>
+  <% end %>
+
   <% tabs.create('tProfile', 'Profile', :class => "profile vcard") do %>
     <%= render :partial => 'profile' %>
     <div class="clear"></div>

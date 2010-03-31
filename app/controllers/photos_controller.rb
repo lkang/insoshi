@@ -1,3 +1,5 @@
+#require 'ruby-debug'
+
 class PhotosController < ApplicationController
 
   before_filter :login_required
@@ -12,6 +14,9 @@ class PhotosController < ApplicationController
   
   def show
     @photo = Photo.find(params[:id])
+    if @body.nil?
+      @body = "photo"
+    end
   end
 
   
@@ -31,6 +36,7 @@ class PhotosController < ApplicationController
   end
 
   def create
+    #debugger
     if params[:photo].nil?
       # This is mainly to prevent exceptions on iPhones.
       flash[:error] = "Your browser doesn't appear to support file uploading"

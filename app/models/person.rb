@@ -94,6 +94,7 @@ class Person < ActiveRecord::Base
 
   has_many :page_views, :order => 'created_at DESC'
   has_many :galleries
+  has_many :guitars
   has_many :events
   has_many :event_attendees
   has_many :attendee_events, :through => :event_attendees, :source => :event

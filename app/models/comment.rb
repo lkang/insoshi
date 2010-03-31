@@ -11,6 +11,7 @@
 #  created_at       :datetime        
 #  updated_at       :datetime        
 #
+#require 'ruby-debug'
 
 class Comment < ActiveRecord::Base
   include ActivityLogger
@@ -26,6 +27,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :person, :counter_cache => true
   belongs_to :post
+  belongs_to :photo
   belongs_to :event
 
   has_many :activities, :foreign_key => "item_id",
@@ -48,6 +50,8 @@ class Comment < ActiveRecord::Base
                             commentable
                           when "BlogPost"
                             commentable.blog.person
+                          when "Photo"
+                            commentable.person
                           when "Event"
                             commentable.person
                           end
@@ -63,6 +67,10 @@ class Comment < ActiveRecord::Base
       commentable.class.to_s == "BlogPost"
     end
 
+    def photo_comment?
+      commentable.class.to_s == "Photo"
+    end
+
     def event_comment?
       commentable.class.to_s == "Event"
     end
@@ -72,6 +80,8 @@ class Comment < ActiveRecord::Base
         commented_person.wall_comment_notifications?
       elsif blog_post_comment?
         commented_person.blog_comment_notifications?
+      elsif photo_comment?
+        commented_person.photo_comment_notifications?
       end
     end
   
@@ -94,6 +104,10 @@ class Comment < ActiveRecord::Base
         @send_mail ||= Comment.global_prefs.email_notifications? &&
                        commented_person.blog_comment_notifications?
         PersonMailer.deliver_blog_comment_notification(self) if @send_mail
+      elsif photo_comment?
+        @send_mail ||= Comment.global_prefs.email_notifications? &&
+                       commented_person.photo_comment_notifications?
+        PersonMailer.deliver_photo_comment_notification(self) if @send_mail
       end
     end
 end

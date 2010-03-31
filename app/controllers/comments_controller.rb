@@ -59,6 +59,8 @@ class CommentsController < ApplicationController
         @post = Post.find(params[:post_id])
       elsif event?
         @event = Event.find(params[:event_id])
+      elsif photo?
+        @photo = Photo.find(params[:photo_id])
       end
     end
   
@@ -69,6 +71,8 @@ class CommentsController < ApplicationController
         @blog.person 
       elsif event?
         @event.person
+      elsif photo?
+        @photo.person
       end
     end
     
@@ -88,6 +92,8 @@ class CommentsController < ApplicationController
         current_person?(person) or current_person?(@comment.commenter)
       elsif blog?
         current_person?(person)
+      elsif photo?
+        current_person?(person)
       end
     end
     
@@ -103,7 +109,9 @@ class CommentsController < ApplicationController
         @person.comments
       elsif blog?
         @post.comments.paginate(:page => params[:page])
-      elsif
+      elsif photo?
+        @photo.comments
+      elsif event?
         @event.comments
       end  
     end
@@ -114,6 +122,8 @@ class CommentsController < ApplicationController
         @person
       elsif blog?
         @post
+      elsif photo?
+        @photo
       elsif event?
         @event
       end
@@ -131,6 +141,8 @@ class CommentsController < ApplicationController
         "wall"
       elsif blog?
         "blog_post"
+      elsif photo?
+        "photo"
       elsif event?
         "event"
       end
@@ -142,6 +154,8 @@ class CommentsController < ApplicationController
         (person_url @person)+'#tWall'  # go directly to comments tab
       elsif blog?
         blog_post_url(@blog, @post)
+      elsif photo?
+        photo_url(@photo)
       elsif event?
         @event
       end
@@ -155,6 +169,10 @@ class CommentsController < ApplicationController
     # True if resource lives in a blog.
     def blog?
       !params[:blog_id].nil?
+    end
+
+    def photo?
+      !params[:photo_id].nil?
     end
 
     def event?

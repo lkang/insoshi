@@ -14,8 +14,8 @@
 
 /* Skin */
 .ui-tabs-nav, .ui-tabs-panel {
-    font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
 }
 .ui-tabs-nav {
     list-style: none;
@@ -34,8 +34,8 @@
 }
 .ui-tabs-nav a, .ui-tabs-nav a span {
     float: left; /* fixes dir=ltr problem and other quirks IE */
-    padding: 0 12px;
-    background: url(/images/tabs-blue.png) no-repeat;
+    padding: 0 8px;
+    background: no-repeat;
 }
 .ui-tabs-nav a {
     margin: 5px 0 0; /* position: relative makes opacity fail for disabled tab in IE */
@@ -46,14 +46,32 @@
     outline: 0; /* @ Firefox, prevent dotted border after click */    
 }
 .ui-tabs-nav a:link, .ui-tabs-nav a:visited {
-    color: #fff;
+    color: #3B5998;
 }
+
+.ui-tabs-nav a:link, .ui-tabs-nav a:visited {
+  font-size: 13px;
+  border-color:#D8DFEA;
+  border-style:solid solid none;
+  border-width:1px 1px 0;
+  background-color: #D8DFEA;
+}
+
+.ui-tabs-nav a:hover {
+  border-color:#627aad;
+  background-color: #627aad;
+  color: #ffffff;
+}
+
 .ui-tabs-nav .ui-tabs-selected a {
+    border-color:#D8DFEA;
+    background-color: #ffffff;
     position: relative;
-    top: 1px;
+    top: 3px;
     z-index: 2;
     margin-top: 0;
     background-position: 100% -23px;
+    color: #333333;
 }
 .ui-tabs-nav a span {
     padding-top: 1px;
@@ -64,9 +82,9 @@
 }
 .ui-tabs-nav .ui-tabs-selected a span {
     padding-top: 0;
-    height: 27px;
+    height: 24px;
     background-position: 0 -23px;
-    line-height: 27px;
+    line-height: 25px;
 }
 .ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited,
 .ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */

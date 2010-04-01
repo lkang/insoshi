@@ -20,6 +20,10 @@
   <h2>Description</h2>
   <%= display guitar.description %>
   <p class="meta">
-    Posted <%= time_ago_in_words(guitar.created_at) %> ago 
+    Posted <%= time_ago_in_words(guitar.created_at) %> ago |
+    <%- n = guitar.comments.count -%>
+    <%= link_to pluralize(n, "comment"),
+                guitar_path(guitar, :comments => n),
+                :class => "show-follow" %>
   </p>
 </li>

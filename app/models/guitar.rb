@@ -3,6 +3,8 @@ class Guitar < ActiveRecord::Base
 
   belongs_to :person
   has_many :photos
+  has_many :comments, :as => :commentable, :order => :created_at,
+                      :dependent => :destroy
   
   validates_presence_of :title
   validates_presence_of :person_id

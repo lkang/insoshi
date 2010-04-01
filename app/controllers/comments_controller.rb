@@ -59,7 +59,7 @@ class CommentsController < ApplicationController
         @post = Post.find(params[:post_id])
       elsif event?
         @event = Event.find(params[:event_id])
-      elsif photo?
+      elsif guitar?
         @guitar = Guitar.find(params[:guitar_id])
       elsif photo?
         @photo = Photo.find(params[:photo_id])
@@ -118,7 +118,7 @@ class CommentsController < ApplicationController
       elsif photo?
         @photo.comments
       elsif guitar?
-        @photo.comments
+        @guitar.comments
       elsif event?
         @event.comments
       end  

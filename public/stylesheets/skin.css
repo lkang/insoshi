@@ -188,6 +188,11 @@ p.welcome {
   margin-bottom: .5em;
 }
 
+.guitar .list p {
+  margin-left: 0;
+  margin-bottom: .5em;
+}
+
 .blog p {
   margin-left: 0;
   margin-bottom: 1em;

@@ -60,6 +60,8 @@ class CommentsController < ApplicationController
       elsif event?
         @event = Event.find(params[:event_id])
       elsif photo?
+        @guitar = Guitar.find(params[:guitar_id])
+      elsif photo?
         @photo = Photo.find(params[:photo_id])
       end
     end
@@ -73,6 +75,8 @@ class CommentsController < ApplicationController
         @event.person
       elsif photo?
         @photo.person
+      elsif guitar?
+        @guitar.person
       end
     end
     
@@ -94,6 +98,8 @@ class CommentsController < ApplicationController
         current_person?(person)
       elsif photo?
         current_person?(person)
+      elsif guitar?
+        current_person?(person)
       end
     end
     
@@ -111,6 +117,8 @@ class CommentsController < ApplicationController
         @post.comments.paginate(:page => params[:page])
       elsif photo?
         @photo.comments
+      elsif guitar?
+        @photo.comments
       elsif event?
         @event.comments
       end  
@@ -124,6 +132,8 @@ class CommentsController < ApplicationController
         @post
       elsif photo?
         @photo
+      elsif guitar?
+        @guitar
       elsif event?
         @event
       end
@@ -143,6 +153,8 @@ class CommentsController < ApplicationController
         "blog_post"
       elsif photo?
         "photo"
+      elsif guitar?
+        "guitar"
       elsif event?
         "event"
       end
@@ -156,6 +168,8 @@ class CommentsController < ApplicationController
         blog_post_url(@blog, @post)
       elsif photo?
         photo_url(@photo)
+      elsif guitar?
+        guitar_url(@guitar)
       elsif event?
         @event
       end
@@ -173,6 +187,10 @@ class CommentsController < ApplicationController
 
     def photo?
       !params[:photo_id].nil?
+    end
+
+    def guitar?
+      !params[:guitar_id].nil?
     end
 
     def event?

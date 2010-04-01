@@ -45,7 +45,7 @@ h2 a, h3 a {
 h3 {
   font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
   font-size: 13px;
-  font-weight: normal;
+  font-weight: bold;
 }
 h3.page-title {
   display: none;

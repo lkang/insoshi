@@ -39,6 +39,16 @@ module ActivitiesHelper
             #{someones(photo.person, person)} photo 
             #{photo_link(photo)})
         end
+      when "Guitar"
+        guitar = activity.item.commentable
+        if recent
+          %(commented on #{someones(guitar.person, person)} guitar
+            #{guitar_link(guitar)})
+        else
+          %(#{person_link_with_image(person)} commented on 
+            #{someones(guitar.person, person)} guitar 
+            #{guitar_link(guitar)})
+        end
       when "Person"
         if recent
           %(commented on #{wall(activity)})
@@ -153,6 +163,10 @@ module ActivitiesHelper
         photo = activity.item.commentable
         %(#{person_link(activity.item.commenter)} commented on 
           #{someones(photo.person, activity.item.commenter)} #{photo_link("photo", photo)}.)
+      when "Guitar"
+        guitar = activity.item.commentable
+        %(#{person_link(activity.item.commenter)} commented on 
+          #{someones(guitar.person, activity.item.commenter)} #{guitar_link("guitar", guitar)}.)
       when "Event"
         event = activity.item.commentable
         %(#{person_link(activity.item.commenter)} commented on 

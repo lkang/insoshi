@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :guitars
+  map.resources :guitars do |guitar|
+    guitar.resources :comments
+  end
 
   map.resources :categories
   map.resources :links

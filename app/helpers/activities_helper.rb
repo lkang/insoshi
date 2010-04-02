@@ -222,6 +222,8 @@ module ActivitiesHelper
                 "comment.png"
               when "Photo"
                 "comment.png"
+              when "Guitar"
+                "comment.png"
               when "Event"
                 "comment.png"
               when "Person"

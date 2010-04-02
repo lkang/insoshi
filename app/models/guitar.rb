@@ -13,7 +13,7 @@ class Guitar < ActiveRecord::Base
   after_create :log_activity
 
   def self.per_page
-    5
+    2
   end
 
   protected

@@ -1,7 +1,7 @@
 <h2><%=h @person.name %>'s Guitars</h2>
 
 <%- if current_person?(@person) -%>
-  <p><%= link_to "New guitar", new_person_guitar_path(@person) %></p>
+  <p><%= link_to "Add a new guitar", new_person_guitar_path(@person) %></p>
 <%- end -%> 
 
 <%- if @guitars.empty? -%>

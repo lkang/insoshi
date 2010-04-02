@@ -126,14 +126,14 @@ p.welcome {
   margin-right: 6px;
 }
 .list li {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #d8d8d8;
   background: none;
   clear: both;
   display: inline;
   float: left;
   list-style: none;
-  margin: 0 0 2px 6px;
-  padding: 0 0 3px 0;
+  margin: 0 0 15px 6px;
+  padding: 0 0 .1em 0;
   width: 100%;
 }
 .list li.last {
@@ -203,8 +203,8 @@ p.welcome {
 .list li ul li {
   background: url(/images/bullet.png) top left no-repeat;
   border: 0;
-  margin: 0 0 .5em 0;
-  padding-left: 24px;
+  margin: 0 0 .12em 0;
+  padding-left: 20px;
 }
 
 .list li li.reply {
@@ -239,7 +239,7 @@ p.welcome {
   margin-right: 12px !important;
 }
 .grid.medium li {
-  background: url(/images/blue-grad.jpg) bottom repeat-x;
+  background: url(/images/blue-grad.jpg) bottom no-repeat;
   border: 1px solid #ccc;
   height: 48px;
   margin: 0 0 12px 6px;
@@ -337,11 +337,11 @@ p.welcome {
 
 /* Gallery list */
 #gallery_list li {
-  background: url(/images/blue-grad.jpg) bottom repeat-x;
+/*  background: url(/images/blue-grad.jpg) bottom repeat-x; */
   border: 1px solid #ccc;
   height: 80px;
   margin: 10px 0 12px 0px;
-  width: 300px;
+  width: 280px;
 }
 #gallery_list li div, #gallery_list li p {
   padding-left: 10px;
@@ -405,9 +405,9 @@ form, div, h2, ul, li {zoom: 1;}
 }
 
 /* Bill's additions */
-h2 {
+/*h2 {
   padding-left: 6px;
-}
+}*/
 .profile {
   position: relative;
 }
@@ -445,7 +445,7 @@ ul.ui-tabs-nav li {
   width: 96%;
   border: 1px solid #D8DFEA;
 }
-.comments li div {border-bottom: 1px solid #ccc;}
+/* .comments li div {border-bottom: 1px solid #ccc;} */
 .imgHoverMarker {display: inline;}
 .imgHoverMarker img {display: none;}
 #tRecentActivity h2, #tPhotos h2, #tWall h2 {margin-bottom: 10px;}
@@ -456,7 +456,7 @@ ul.ui-tabs-nav li {
   margin-top: 4px;
 }
 #photos ul li {
-    background: url(/images/blue-grad.jpg) bottom repeat-x;
+    background: url(/images/blue-grad.jpg) no-repeat left bottom;
   margin: 10px 10px 0px 0px;
     float: left;
   display: inline;

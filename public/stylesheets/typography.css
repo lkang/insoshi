@@ -28,7 +28,7 @@ h6 {
 }
 h2 {
   background-color: #d8dfea;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #d8d8d8;
   color: #1C2A47;
   clear: both;
   font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
@@ -36,12 +36,20 @@ h2 {
   font-weight: bold;
   line-height: 20px;
   margin-top: 12px;
-  padding-left: 6px;
+  padding-left: 1px;
 }
-li h2 {font-size: 1em;}
+
+li h2 {
+  font-size: 1em;
+  background-color: #f1f4fc;
+  border-bottom: 1px solid #eeeeee;
+}
+
+
 h2 a, h3 a {
   font-weight: normal;
 }
+
 h3 {
   font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
   font-size: 13px;
@@ -51,7 +59,7 @@ h3.page-title {
   display: none;
 }
 h4 {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f2f2f2;
   clear: both;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
@@ -72,8 +80,8 @@ h6 {
 ul li {
   background: url(/images/bullet.png) top left no-repeat;
   border: 0;
-  margin: 0 0 .5em 0;
-  padding-left: 24px;
+  margin: 0 0 .12em 0;
+  padding-left: 2px;
 }
 ol li {
   list-style: decimal;

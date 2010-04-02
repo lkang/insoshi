@@ -10,6 +10,7 @@ describe "/people/show.html.erb" do
     assigns[:blog] = @person.blog
     assigns[:posts] = @person.blog.posts.paginate(:page => 1)
     assigns[:galleries] = @person.galleries.paginate(:page => 1)
+    assigns[:guitars] = @person.guitars.paginate(:page => 1)
     assigns[:some_contacts] = @person.some_contacts
     assigns[:common_contacts] = []
     render "/people/show.html.erb"

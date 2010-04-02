@@ -1,5 +1,7 @@
 class Guitar < ActiveRecord::Base
   include ActivityLogger
+  
+  attr_accessible :title, :specs, :description
 
   belongs_to :person
   has_many :photos

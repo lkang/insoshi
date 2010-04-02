@@ -13,6 +13,8 @@ quentin:
   message_notifications: true
   wall_comment_notifications: true
   blog_comment_notifications: true
+  photo_comment_notifications: true
+  guitar_comment_notifications: true
   email_verified: true
 
 aaron:
@@ -26,6 +28,8 @@ aaron:
   message_notifications: true
   wall_comment_notifications: true
   blog_comment_notifications: true
+  photo_comment_notifications: true
+  guitar_comment_notifications: true
   email_verified: true
 
 kelly:
@@ -39,6 +43,8 @@ kelly:
   message_notifications: true
   wall_comment_notifications: true
   blog_comment_notifications: true
+  photo_comment_notifications: true
+  guitar_comment_notifications: true
   
 admin:
   email: admin@example.com
@@ -52,6 +58,8 @@ admin:
   message_notifications: true
   wall_comment_notifications: true
   blog_comment_notifications: true
+  photo_comment_notifications: true
+  guitar_comment_notifications: true
 
 deactivated:
   email: deactivated@example.com

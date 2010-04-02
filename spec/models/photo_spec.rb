@@ -35,6 +35,60 @@ describe Photo do
     photo.errors.on(:base).should_not be_nil
   end
   
+  describe "photo activity associations" do
+    
+    before(:each) do
+      @photo = new_photo
+      @photo.save!
+      @activity = Activity.find_by_item_id(@photo)
+    end
+    
+    it "should have an activity" do
+      @activity.should_not be_nil
+    end
+    
+    it "should add an activity to the poster" do
+      @photo.person.recent_activity.should contain(@activity)
+    end
+  end
+  
+  describe "comment associations" do
+    
+    before(:each) do
+      @photo = new_photo
+      @photo.save
+      @comment = @photo.comments.unsafe_create(:body => "The body",
+                                              :commenter => people(:aaron))
+    end
+    
+    it "should have associated comments" do
+      @photo.comments.should_not be_empty
+    end
+    
+    it "should add activities to the poster" do
+      @photo.comments.each do |comment|
+        activity = Activity.find_by_item_id(comment)
+        @photo.person.activities.should contain(activity)
+      end
+    end
+    
+    it "should destroy the comments if the photo is destroyed" do
+      comments = @photo.comments
+      @photo.destroy
+      comments.each do |comment|
+        comment.should_not exist_in_database
+      end
+    end
+    
+    it "should destroy the comments activity if the photo is destroyed" do
+      comments = @photo.comments
+      @photo.destroy
+      comments.each do |comment|
+        Activity.find_by_item_id(comment).should be_nil
+      end
+    end
+  end
+
   private
   
     def new_photo(options = {})
@@ -42,4 +96,6 @@ describe Photo do
                   :person        => @person,
                   :gallery       => @gallery }.merge(options))
     end
+
+
 end

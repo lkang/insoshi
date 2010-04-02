@@ -17,3 +17,15 @@ event_comment:
   body: MyText
   commentable: public
   commentable_type: Event
+
+photo_comment:
+  commenter: aaron
+  body: MyText
+  commentable: one
+  commentable_type: Photo
+
+guitar_comment:
+  commenter: aaron
+  body: MyText
+  commentable: one
+  commentable_type: Guitar

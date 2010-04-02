@@ -4,7 +4,7 @@ module ApplicationHelper
   ## Application-wide values
   def app_name
     name = global_prefs.app_name
-    default = "Insoshi"
+    default = "CGpages"
     name.blank? ? default : name
   end
 

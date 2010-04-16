@@ -50,6 +50,13 @@ describe Photo do
     it "should add an activity to the poster" do
       @photo.person.recent_activity.should contain(@activity)
     end
+
+    it "should destroy the activity if the photo is destroyed" do
+      photo = @photo
+      @photo.destroy
+      Activity.find_by_item_id(photo).should be_nil
+    end
+
   end
   
   describe "comment associations" do

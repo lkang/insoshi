@@ -5,6 +5,8 @@ class Guitar < ActiveRecord::Base
 
   belongs_to :person
   has_many :photos
+  has_many :activities, :foreign_key => "item_id", :dependent => :destroy,
+                        :conditions => "item_type = 'Guitar'"
   has_many :comments, :as => :commentable, :order => :created_at,
                       :dependent => :destroy
   
@@ -15,7 +17,7 @@ class Guitar < ActiveRecord::Base
   after_create :log_activity
 
   def self.per_page
-    2
+    1
   end
 
   protected

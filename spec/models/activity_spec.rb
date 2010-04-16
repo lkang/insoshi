@@ -11,7 +11,8 @@ describe Activity do
                                              :person => @person)
     destroy_should_remove_activity(@post)
   end
-  
+ 
+# already covered in objects that have comments! 
   it "should delete a comment activity along with its parent item" do
     @comment = @person.comments.unsafe_create(:body => "Hey there",
                                               :commenter => @commenter)

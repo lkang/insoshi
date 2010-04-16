@@ -102,6 +102,104 @@ describe Comment do
     end
   end
 
+  describe "photo comments" do
+    
+    before(:each) do
+      @photo = photos(:photoone)
+      @comment = @photo.comments.unsafe_build(:body => "Hey there",
+                                             :commenter => people(:aaron))
+    end
+  
+    describe "email notifications" do
+      
+      before(:each) do
+        @emails = ActionMailer::Base.deliveries
+        @emails.clear
+        @global_prefs = Preference.find(:first)
+        @recipient = @comment.commented_person
+      end
+      
+      it "should send an email when global/recipient notifications are on" do
+        # Both notifications are on by default.
+        lambda do
+          @comment.save
+        end.should change(@emails, :length).by(1)
+      end
+      
+      it "should not send an email when recipient's notifications are off" do
+        @recipient.toggle!(:photo_comment_notifications)
+        @recipient.photo_comment_notifications.should == false
+        lambda do
+          @comment.save
+        end.should_not change(@emails, :length)
+      end
+      
+      it "should not send an email when global notifications are off" do
+        @global_prefs.update_attributes(:email_notifications => false)
+        lambda do
+          @comment.save
+        end.should_not change(@emails, :length)
+      end
+      
+      it "should not send an email for an own-comment" do
+        lambda do
+          commenter = @photo.person
+          comment = @photo.comments.unsafe_create(:body => "Hey there",
+                                                 :commenter => commenter)
+        end.should_not change(@emails, :length)
+      end
+    end
+  end
+
+  describe "guitar comments" do
+    
+    before(:each) do
+      @guitar = guitars(:one)
+      @comment = @guitar.comments.unsafe_build(:body => "Hey there",
+                                             :commenter => people(:aaron))
+    end
+  
+    describe "email notifications" do
+      
+      before(:each) do
+        @emails = ActionMailer::Base.deliveries
+        @emails.clear
+        @global_prefs = Preference.find(:first)
+        @recipient = @comment.commented_person
+      end
+      
+      it "should send an email when global/recipient notifications are on" do
+        # Both notifications are on by default.
+        lambda do
+          @comment.save
+        end.should change(@emails, :length).by(1)
+      end
+      
+      it "should not send an email when recipient's notifications are off" do
+        @recipient.toggle!(:guitar_comment_notifications)
+        @recipient.guitar_comment_notifications.should == false
+        lambda do
+          @comment.save
+        end.should_not change(@emails, :length)
+      end
+      
+      it "should not send an email when global notifications are off" do
+        @global_prefs.update_attributes(:email_notifications => false)
+        lambda do
+          @comment.save
+        end.should_not change(@emails, :length)
+      end
+      
+      it "should not send an email for an own-comment" do
+        lambda do
+          commenter = @guitar.person
+          comment = @guitar.comments.unsafe_create(:body => "Hey there",
+                                                 :commenter => commenter)
+        end.should_not change(@emails, :length)
+      end
+    end
+  end
+
   describe "wall comments" do
   
     before(:each) do

@@ -33,6 +33,7 @@ class CommentsController < ApplicationController
       if @comment.save
         flash[:success] = 'Comment was successfully created.'
         format.html { redirect_to comments_url }
+        format.js #just return the js partial
       else
         format.html { render :action => resource_template("new") }
       end
@@ -46,6 +47,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       flash[:success] = "Comment deleted"
       format.html { redirect_to comments_url }
+      format.js
     end
   end
   
@@ -92,14 +94,11 @@ class CommentsController < ApplicationController
     
     def authorized_to_destroy?
       @comment = Comment.find(params[:id])
-      if wall?
-        current_person?(person) or current_person?(@comment.commenter)
-      elsif blog?
-        current_person?(person)
-      elsif photo?
-        current_person?(person)
-      elsif guitar?
-        current_person?(person)
+      case @comment.commentable.class.to_s
+      when "Wall"
+        current_person?(@comment.commented_person) or current_person?(@comment.commenter)
+      else # blog? photo? guitar? 
+        current_person?(@comment.commented_person)
       end
     end
     

@@ -1,0 +1,1 @@
+page.insert_html :bottom, 'ajaxcomments', :partial => 'comment', :locals => {:comment => @comment}

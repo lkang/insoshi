@@ -79,6 +79,16 @@ class PhotosController < ApplicationController
     end
   end
   
+  def justcomments
+    @photo = Photo.find(params[:id] )
+    
+    respond_to do |format|
+      format.html 
+      format.js 
+    end
+  end
+
+  
   def set_primary
     @photo = Photo.find(params[:id])
     if @photo.nil? or @photo.primary?

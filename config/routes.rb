@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments #, :only => :destroy
   map.resources :guitars do |guitar|
     guitar.resources :comments
   end

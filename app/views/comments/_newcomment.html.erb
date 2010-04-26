@@ -1,0 +1,13 @@
+<%= error_messages_for :comment %>
+<p><%= formatting_note %></p>
+<% form_remote_for :comment, :url => inputurl,
+            :html => { :id => "anykindofcomment" } do |f| %>
+  <div class="form_row">
+    <%= f.text_area :body, :rows => 2 %>
+  </div>
+  
+  <div class="form_row">
+    <%= submit_tag "Submit", :class => "button" %>
+  </div>
+<% end %>
+

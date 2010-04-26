@@ -92,6 +92,17 @@ class GuitarsController < ApplicationController
     end
   end
 
+
+  def justcomments
+    @guitar = Guitar.find(params[:id] )
+    respond_to do |format|
+      format.html { render :partial => 'comments/comment', :collection => @guitar.comments }
+      format.xml  { head :ok }
+      format.js
+    end
+  end
+
+
   private
     def correct_user_required
       @guitar = Guitar.find(params[:id])

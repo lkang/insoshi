@@ -15,6 +15,8 @@
 #  forum_posts_count          :integer(4)      default(0), not null
 #  blog_post_comments_count   :integer(4)      default(0), not null
 #  wall_comments_count        :integer(4)      default(0), not null
+#  photo_comments_count       :integer(4)      default(0), not null
+#  guitar_comments_count      :integer(4)      default(0), not null
 #  created_at                 :datetime        
 #  updated_at                 :datetime        
 #  admin                      :boolean(1)      not null
@@ -23,6 +25,8 @@
 #  message_notifications      :boolean(1)      default(TRUE)
 #  wall_comment_notifications :boolean(1)      default(TRUE)
 #  blog_comment_notifications :boolean(1)      default(TRUE)
+#  photo_comment_notifications :boolean(1)     default(TRUE)
+#  guitar_comment_notifications :boolean(1)    default(TRUE)
 #  email_verified             :boolean(1)      
 #  avatar_id                  :integer(4)      
 #  identity_url               :string(255)     
@@ -37,7 +41,8 @@ class Person < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :name,
                   :description, :connection_notifications,
                   :message_notifications, :wall_comment_notifications,
-                  :blog_comment_notifications, :identity_url
+                  :blog_comment_notifications, :identity_url,
+                  :photo_comment_notifications, :guitar_comment_notifications
   # Indexed fields for Sphinx
   is_indexed :fields => [ 'name', 'description', 'deactivated',
                           'email_verified'],
@@ -94,6 +99,7 @@ class Person < ActiveRecord::Base
 
   has_many :page_views, :order => 'created_at DESC'
   has_many :galleries
+  has_many :guitars
   has_many :events
   has_many :event_attendees
   has_many :attendee_events, :through => :event_attendees, :source => :event

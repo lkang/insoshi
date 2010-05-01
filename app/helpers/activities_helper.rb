@@ -29,6 +29,26 @@ module ActivitiesHelper
             #{someones(blog.person, person)} blog post
             #{post_link(blog, post)})
         end
+      when "Photo"
+        photo = activity.item.commentable
+        if recent
+          %(commented on #{someones(photo.person, person)} photo
+            #{photo_link(photo)})
+        else
+          %(#{person_link_with_image(person)} commented on 
+            #{someones(photo.person, person)} photo 
+            #{photo_link(photo)})
+        end
+      when "Guitar"
+        guitar = activity.item.commentable
+        if recent
+          %(commented on #{someones(guitar.person, person)} guitar
+            #{guitar_link(guitar)})
+        else
+          %(#{person_link_with_image(person)} commented on 
+            #{someones(guitar.person, person)} guitar 
+            #{guitar_link(guitar)})
+        end
       when "Person"
         if recent
           %(commented on #{wall(activity)})
@@ -88,6 +108,13 @@ module ActivitiesHelper
         %(#{person_link_with_image(person)} added a new gallery
           #{gallery_link(activity.item)})
       end
+    when "Guitar"
+      if recent
+        %(new guitar #{guitar_link(activity.item)})
+      else
+        %(#{person_link_with_image(person)} added a new guitar
+          #{guitar_link(activity.item)})
+      end
     when "Photo"
       if recent
         %(added new #{photo_link(activity.item)}
@@ -132,6 +159,14 @@ module ActivitiesHelper
       when "Person"
         %(#{person_link(activity.item.commenter)} commented on 
           #{wall(activity)}.)
+      when "Photo"
+        photo = activity.item.commentable
+        %(#{person_link(activity.item.commenter)} commented on 
+          #{someones(photo.person, activity.item.commenter)} #{photo_link("photo", photo)}.)
+      when "Guitar"
+        guitar = activity.item.commentable
+        %(#{person_link(activity.item.commenter)} commented on 
+          #{someones(guitar.person, activity.item.commenter)} #{guitar_link("guitar", guitar)}.)
       when "Event"
         event = activity.item.commentable
         %(#{person_link(activity.item.commenter)} commented on 
@@ -156,6 +191,9 @@ module ActivitiesHelper
     when "Gallery"
       %(#{person_link(person)} added a new gallery
         #{gallery_link(activity.item)})
+    when "Guitar"
+      %(#{person_link(person)} added a new guitar
+        #{guitar_link(activity.item)})
     when "Photo"
       %(#{person_link(person)} added new
         #{photo_link(activity.item)} #{to_gallery_link(activity.item.gallery)})
@@ -182,6 +220,10 @@ module ActivitiesHelper
               case parent_type
               when "BlogPost"
                 "comment.png"
+              when "Photo"
+                "comment.png"
+              when "Guitar"
+                "comment.png"
               when "Event"
                 "comment.png"
               when "Person"
@@ -199,6 +241,8 @@ module ActivitiesHelper
               "note.png"
             when "Person"
                 "user_edit.png"
+            when "Guitar"
+              "photos.png"
             when "Gallery"
               "photos.png"
             when "Photo"
@@ -238,6 +282,14 @@ module ActivitiesHelper
       text = topic.name
     end
     link_to(text, forum_topic_path(topic.forum, topic))
+  end
+  
+  def guitar_link(text, guitar = nil)
+    if guitar.nil?
+      guitar = text
+      text = guitar.title
+    end
+    link_to(h(text), guitar_path(guitar))
   end
   
   def gallery_link(text, gallery = nil)

@@ -45,6 +45,9 @@ class Photo < ActiveRecord::Base
   has_many :activities, :foreign_key => "item_id",
                         :conditions => "item_type = 'Photo'",
                         :dependent => :destroy
+
+  has_many :comments, :as => :commentable, :order => :created_at,
+                      :dependent => :destroy
     
   validates_length_of :title, :maximum => 255, :allow_nil => true
   validates_presence_of :person_id

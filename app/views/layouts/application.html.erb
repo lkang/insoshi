@@ -38,7 +38,10 @@
         <%= yield %>
       </div>
       <%= render :partial => 'shared/footer' %>
-      <%= render :partial => 'shared/debug' if development? %>
+      <% if development? %>
+      <%    puts "development? = true: Hi, this is coming from #{(__FILE__)}" %>
+      <%= render :partial => 'shared/debug' %> 
+      <% end %>
     </div>
     <%= global_prefs.analytics %>
   </body>

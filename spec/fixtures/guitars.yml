@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  person: quentin
+  title: ramirez
+  specs: classical
+  description: galinavale
+
+two:
+  person: quentin
+  title: fender
+  specs: strat
+  description: ericclapton
+
+three:
+  person: quentin
+  title: gibson
+  specs: 335
+  description: larrycarlton
+
+four:
+  person: aaron
+  title: yamaha
+  specs: sg3000
+  description: carlossantana

@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments #, :only => :destroy
+  map.resources :guitars do |guitar|
+    guitar.resources :comments
+  end
+
   map.resources :categories
   map.resources :links
   map.resources :events, :member => { :attend => :get, 
@@ -12,7 +17,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :connections
   map.resources :password_reminders
   map.resources :photos,
-                :member => { :set_primary => :put, :set_avatar => :put }
+                :member => { :set_primary => :put, :set_avatar => :put } do |photo|
+    photo.resources :comments
+  end
+
   map.open_id_complete 'session', :controller => "sessions",
                                   :action => "create",
                                   :requirements => { :method => :get }
@@ -28,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people do |person|
      person.resources :messages
      person.resources :galleries
+     person.resources :guitars
      person.resources :connections
      person.resources :comments
   end
@@ -58,7 +67,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'people', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.home '/', :controller => 'home'
+  map.home '/', :controller => 'forums', :action => 'index'
   map.about '/about', :controller => 'home', :action => 'about'
   map.admin_home '/admin/home', :controller => 'home'
 

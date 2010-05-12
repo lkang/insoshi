@@ -1,0 +1,14 @@
+namespace :lkang do
+
+  task :mkfbml do
+    flist = Dir["./**/*.html.erb"]
+    flist.each do |f|
+      oldname = f
+      newname = f.sub /.html.erb/, ".fbml.erb"
+      FileUtils.cp oldname, newname
+      puts "old: " +  f
+      puts "new: " +  newname
+    end
+  end
+
+end

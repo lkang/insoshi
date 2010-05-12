@@ -51,6 +51,18 @@
             <%= f.check_box :blog_comment_notifications,
                             {}, 'true', 'false' %>
           </p>
+          <p>
+            <%= f.label :photo_comment_notifications, 'Photo Comments', 
+                                                     :class => "checkbox" %>
+            <%= f.check_box :photo_comment_notifications,
+                            {}, 'true', 'false' %>
+          </p>
+          <p>
+            <%= f.label :guitar_comment_notifications, 'Guitar Comments', 
+                                                     :class => "checkbox" %>
+            <%= f.check_box :guitar_comment_notifications,
+                            {}, 'true', 'false' %>
+          </p>
         </div>
       <%- end -%>
 

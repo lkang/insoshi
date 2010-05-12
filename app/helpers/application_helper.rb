@@ -4,7 +4,7 @@ module ApplicationHelper
   ## Application-wide values
   def app_name
     name = global_prefs.app_name
-    default = "Insoshi"
+    default = "CGpages"
     name.blank? ? default : name
   end
 
@@ -29,7 +29,8 @@ module ApplicationHelper
       #                        person_connections_path(current_person))
       events   = menu_element("Events", events_path)
       #links = [home, profile, contacts, messages, blog, people, forum]
-      links = [home, profile, messages, people, forum]
+      #links = [home, profile, messages, people, forum]
+      links = [forum, profile, people]
       # TODO: put this in once events are ready.
       # links.push(events)
       
@@ -41,7 +42,8 @@ module ApplicationHelper
       preferences = menu_element("Prefs", admin_preferences_path)
       links = [home, people, forums, preferences]
     else
-      links = [home, people]
+      links = [forum, people, home]
+    #consider a new option for facebook. remove msgs, home. Add splash. 
     end
     if global_prefs.about.blank?
       links

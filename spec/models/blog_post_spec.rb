@@ -41,6 +41,13 @@ describe BlogPost do
     it "should add an activity to the poster" do
       @post.blog.person.recent_activity.should contain(@activity)
     end
+
+    it "should destroy the activity if the post is destroyed" do
+      post = @post
+      @post.destroy
+      Activity.find_by_item_id(post).should be_nil
+    end
+
   end
   
   describe "comment associations" do

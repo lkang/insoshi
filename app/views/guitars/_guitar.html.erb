@@ -1,0 +1,29 @@
+<li class="guitar">
+  <h3> 
+    <a name="guitar_<%= guitar.id %>"></a>
+    <%= link_to sanitize(guitar.title),
+                guitar_path(guitar),
+                :class => "show-follow" %>
+    <%- if current_person?(guitar.person) -%>
+      <%= link_to image_tag("icons/page_white_edit.png",
+                            :class => 'actioner'),
+                  edit_guitar_path(guitar) %>
+      <%= link_to image_tag("icons/page_white_delete.png",
+                            :class => 'actioner'),
+                  guitar_path(guitar),
+                  :method => :delete,
+                  :confirm => "Delete this guitar?" %>
+    <%- end -%>
+  </h3>
+  <h2>Specifications</h2>
+  <%= display guitar.specs %>
+  <h2>Description</h2>
+  <%= display guitar.description %>
+  <p class="meta">
+    Posted <%= time_ago_in_words(guitar.created_at) %> ago |
+    <%- n = guitar.comments.count -%>
+    <%= link_to pluralize(n, "comment"),
+                guitar_path(guitar, :comments => n),
+                :class => "show-follow" %>
+  </p>
+</li>

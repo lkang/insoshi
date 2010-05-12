@@ -1,0 +1,16 @@
+<li id="<%=dom_id(comment)%>">
+  <p class="meta">
+    <%= image_tag "icons/comment.png", :class => "icon", :alt => "Comment" %>
+    <%= person_link comment.commenter %> posted a comment
+    <%= time_ago_in_words(comment.created_at) %> ago:
+  </p>
+  <%= display comment.body %>
+  <%- if current_person?(comment.commentable.person) -%>
+  <div>
+    <%= link_to_remote "delete", 
+                        :url => {:controller => '/comments', :action => :destroy, :id => comment.id }, 
+                        :method => :delete %>
+  </div>
+  <%- end -%>
+</li>
+

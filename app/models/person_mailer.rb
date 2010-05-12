@@ -55,6 +55,28 @@ class PersonMailer < ActionMailer::Base
                     preferences_note(comment.commented_person)
   end
   
+  def photo_comment_notification(comment)
+    from         "Comment notification <comment@#{domain}>"
+    recipients   comment.commented_person.email
+    subject      formatted_subject("New photo comment")
+    body         "server" => server, "comment" => comment,
+                 "url" => 
+                 photo_path(comment.commentable),
+                 "preferences_note" => 
+                    preferences_note(comment.commented_person)
+  end
+  
+  def guitar_comment_notification(comment)
+    from         "Comment notification <comment@#{domain}>"
+    recipients   comment.commented_person.email
+    subject      formatted_subject("New guitar comment")
+    body         "server" => server, "comment" => comment,
+                 "url" => 
+                 guitar_path(comment.commentable),
+                 "preferences_note" => 
+                    preferences_note(comment.commented_person)
+  end
+  
   def email_verification(ev)
     from         "Email verification <email@#{domain}>"
     recipients   ev.person.email

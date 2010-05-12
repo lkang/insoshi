@@ -30,6 +30,7 @@ class PeopleController < ApplicationController
       num_contacts = Person::MAX_DEFAULT_CONTACTS
       @some_common_contacts = @common_contacts[0...num_contacts]
       @blog = @person.blog
+      @guitars = @person.guitars.paginate(:page => params[:page])
       @posts = @person.blog.posts.paginate(:page => params[:page])
       @galleries = @person.galleries.paginate(:page => params[:page])
     end

@@ -1,0 +1,17 @@
+<h2><%=h @person.name %>'s Guitars</h2>
+
+<%- if current_person?(@person) -%>
+  <p><%= link_to "Add a new guitar", new_person_guitar_path(@person) %></p>
+<%- end -%> 
+
+<%- if @guitars.empty? -%>
+  <h3 class="blankslate">
+    No guitars (yet)
+  </h3> 
+<%- else -%>
+  <ul class="list blog full">
+    <%= render :partial => 'guitars/guitar', :collection => @guitars %>
+  </ul>
+<%- end -%>
+
+<%= will_paginate(@guitars) %>

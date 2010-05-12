@@ -36,4 +36,5 @@ savplugins
 tags
 rdebugconfig
 public/javascripts/old
-
+config/preinitializer.rb
+public/.htaccess

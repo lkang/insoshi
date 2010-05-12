@@ -37,4 +37,5 @@ tags
 rdebugconfig
 public/javascripts/old
 config/preinitializer.rb
+config/facebooker.yml
 public/.htaccess
